@@ -4,8 +4,13 @@ import playingAgain from "../../assets/boton-volver-a-jugar.png";
 
 export class Button extends HTMLElement {
   shadow: ShadowRoot;
+  BASE_PATH: string;
+
   constructor() {
     super();
+    this.BASE_PATH = location.hostname.includes("github.io")
+      ? "/piedra-papel-tijera-juego-web"
+      : "";
     this.shadow = this.attachShadow({ mode: "open" });
     const style = document.createElement("style");
     style.innerHTML = `
@@ -30,7 +35,7 @@ export class Button extends HTMLElement {
   }
 
   getCleanPath() {
-    return location.pathname.replace(BASE_PATH, "");
+    return location.pathname.replace(this.BASE_PATH, "");
   }
 
   render() {
