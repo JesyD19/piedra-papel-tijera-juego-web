@@ -45,7 +45,6 @@ export function initPageComputerYouChoice(params) {
   div.appendChild(loader);
 
   /* setTimeout(() => {
-    div.removeChild(loader);
     params.goTo("/result");
   }, 3000); */
 
