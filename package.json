@@ -1,0 +1,21 @@
+{
+  "name": "desafio-piedra-papel-o-tijera",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "gh-pages -d dist",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "Jesica Dominguez Alderete",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "vite": "7.2.2"
+  },
+  "dependencies": {
+    "gh-pages": "6.3.0"
+  }
+}
