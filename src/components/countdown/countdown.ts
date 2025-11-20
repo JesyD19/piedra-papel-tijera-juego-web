@@ -53,7 +53,8 @@ export class Countdown extends HTMLElement {
   }
 
   render() {
-    this.shadow.innerHTML = "";
+    this.innerCircle.innerHTML = "";
+    this.innerCircle.style.fontSize = "80px";
 
     let counter = 3;
 
@@ -72,9 +73,11 @@ export class Countdown extends HTMLElement {
       counter--;
     }, 1000);
 
-    this.outerCircle.appendChild(this.innerCircle);
-    this.circlesContainer.appendChild(this.outerCircle);
-    this.shadow.appendChild(this.circlesContainer);
+    if (!this.outerCircle.parentElement) {
+      this.outerCircle.appendChild(this.innerCircle);
+      this.circlesContainer.appendChild(this.outerCircle);
+      this.shadow.appendChild(this.circlesContainer);
+    }
   }
 
   stopCountdown() {
