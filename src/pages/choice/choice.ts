@@ -105,7 +105,7 @@ export function initPageChoice(params) {
     paperElement.removeEventListener("choosingPaper", onChoosingPaper);
 
     setTimeout(() => {
-      params.goTo("./welcome");
+      params.goTo("/welcome");
     }, 1000);
   };
 
