@@ -5,12 +5,20 @@ import { initPageChoices } from "./pages/choices/choices";
 import { initPageComputerYouChoice } from "./pages/computer-you-choice/computer-you-choice";
 import { initPageResult } from "./pages/result/result";
 
+/* const routes = [
+  { path: /\/welcome/, page: initPageWelcome },
+  { path: /\/instructions/, page: initPageInstructions },
+  { path: /\/choice/, page: initPageChoice },
+  { path: /\/computer-you-choice/, page: initPageComputerYouChoice },
+  { path: /\/result/, page: initPageResult },
+]; */
+
 const routes = [
-  { path: /#\/welcome/, page: initPageWelcome },
-  { path: /#\/instructions/, page: initPageInstructions },
-  { path: /#\/choice/, page: initPageChoice },
-  { path: /#\/computer-you-choice/, page: initPageComputerYouChoice },
-  { path: /#\/result/, page: initPageResult },
+  { path: /^\/welcome$/, page: initPageWelcome },
+  { path: /^\/instructions$/, page: initPageInstructions },
+  { path: /^\/choice$/, page: initPageChoice },
+  { path: /^\/computer-you-choice$/, page: initPageComputerYouChoice },
+  { path: /^\/result$/, page: initPageResult },
 ];
 
 export function initRouter(container: Element) {
@@ -35,16 +43,17 @@ export function initRouter(container: Element) {
     }
   }
 
-  // Escuchar cambios en el hash
   window.addEventListener("hashchange", () => {
-    handleRoute(location.hash);
+    const route = location.hash.replace(/^#/, ""); // Saco el #
+    handleRoute(route);
   });
 
   // Inicializar en la ruta de bienvenida
-  if (location.hash === "") {
+  if (!location.hash) {
     goTo("/welcome");
   } else {
-    handleRoute(location.hash);
+    const route = location.hash.replace(/^#/, "");
+    handleRoute(route);
   }
 
   /*  if (location.pathname === "/") {
