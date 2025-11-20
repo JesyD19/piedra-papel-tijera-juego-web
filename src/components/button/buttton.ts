@@ -19,7 +19,7 @@ export class Button extends HTMLElement {
       div img {
         max-width: 100%;
         height: auto;
-        display; block;
+        display: block;
       
       }
     `;
@@ -29,12 +29,16 @@ export class Button extends HTMLElement {
     this.render();
   }
 
+  getCleanPath() {
+    return location.pathname.replace(BASE_PATH, "");
+  }
+
   render() {
     this.div.innerHTML = `
       <img src="${
-        location.pathname === "/welcome"
+        this.getCleanPath() === "/welcome"
           ? beginButton
-          : location.pathname === "/result"
+          : this.getCleanPath() === "/result"
           ? playingAgain
           : playButton
       }">

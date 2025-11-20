@@ -43,7 +43,7 @@ export function initPageResult(params) {
 `;
 
   const button = div.querySelector("button-element");
-  button.addEventListener("playingAgain", () => params.goTo("./welcome"));
+  button.addEventListener("playingAgain", () => params.goTo("/welcome"));
 
   return div;
 }
