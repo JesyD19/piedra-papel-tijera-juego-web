@@ -52,3 +52,8 @@ body {
   transform: translateX(-50%) rotate(180deg);
   gap: 20px;
 }
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}

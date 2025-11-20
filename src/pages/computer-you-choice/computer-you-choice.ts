@@ -31,8 +31,32 @@ export function initPageComputerYouChoice(params) {
     }</div>
   `;
 
-  setTimeout(() => {
+  // Crear y mostrar el loader
+  const loader = document.createElement("div");
+  loader.innerText = "Cargando...";
+  loader.style.position = "absolute";
+  loader.style.top = "50%";
+  loader.style.left = "50%";
+  loader.style.transform = "translate(-50%, -50%)";
+  loader.style.fontSize = "20px";
+  loader.style.color = "#fff";
+  loader.style.zIndex = "10";
+
+  div.appendChild(loader);
+
+  /* setTimeout(() => {
+    div.removeChild(loader);
     params.goTo("/result");
+  }, 3000); */
+
+  setTimeout(() => {
+    div.removeChild(loader);
+    div.classList.add("fade-out");
+
+    // Esperar a que termine la transición antes de redirigir
+    setTimeout(() => {
+      params.goTo("/result");
+    }, 500); // Esperar 500ms para que el fade-out se vea
   }, 2000);
 
   return div;
