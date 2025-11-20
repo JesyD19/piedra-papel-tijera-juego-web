@@ -53,6 +53,8 @@ export class Countdown extends HTMLElement {
   }
 
   render() {
+    this.shadow.innerHTML = "";
+
     let counter = 3;
 
     this.countdown = setInterval(() => {

@@ -6,9 +6,9 @@ import { state } from "../../state";
 
 export function initPageChoice(params) {
   history.pushState(null, "", window.location.href);
-  window.onpopstate = function (event) {
+  /*  window.onpopstate = function (event) {
     history.pushState(null, "", window.location.href);
-  };
+  }; */
 
   const div = document.createElement("div");
   div.classList.add("wallpaper");
@@ -114,6 +114,8 @@ export function initPageChoice(params) {
   window.onpopstate = function (event) {
     countdownElement.stopCountdown();
     console.log("Countdown detenido por navegación");
+
+    countdownElement.render();
 
     params.goTo(location.pathname);
   };
