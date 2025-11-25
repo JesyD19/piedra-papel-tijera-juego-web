@@ -50,7 +50,7 @@ export class Button extends HTMLElement {
     `;
 
     const button = this.div.querySelector("img");
-    button.addEventListener("click", () => {
+    /* button.addEventListener("click", () => {
       const eventInstructions = new CustomEvent("instructionsRoute");
       const eventChoice = new CustomEvent("choiceRoute");
       const eventPlayingAgain = new CustomEvent("playingAgain");
@@ -58,6 +58,18 @@ export class Button extends HTMLElement {
       this.dispatchEvent(eventInstructions);
       this.dispatchEvent(eventChoice);
       this.dispatchEvent(eventPlayingAgain);
+    }); */
+
+    button.addEventListener("click", () => {
+      const cleanPath = this.getCleanPath();
+
+      if (cleanPath === "/welcome") {
+        this.dispatchEvent(new CustomEvent("instructionsRoute"));
+      } else if (cleanPath === "/result") {
+        this.dispatchEvent(new CustomEvent("playingAgain"));
+      } else {
+        this.dispatchEvent(new CustomEvent("choiceRoute"));
+      }
     });
   }
 }
