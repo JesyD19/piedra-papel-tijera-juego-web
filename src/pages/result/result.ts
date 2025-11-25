@@ -6,9 +6,15 @@ import "../../components/draw-star/draw-star";
 import "../../components/score/score";
 
 export function initPageResult(params) {
-  history.pushState(null, "", window.location.href);
+  /*  history.pushState(null, "", window.location.href);
   window.onpopstate = function (event) {
     history.pushState(null, "", window.location.href);
+  }; */
+
+  window.onpopstate = function (event) {
+    if (!window.location.hash.includes("/welcome")) {
+      history.pushState(null, "", window.location.href);
+    }
   };
 
   const div = document.createElement("div");
