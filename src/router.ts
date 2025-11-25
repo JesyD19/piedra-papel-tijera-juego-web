@@ -42,6 +42,7 @@ import { initPageResult } from "./pages/result/result"; */
   } */
 //}
 
+/* 
 import { initPageWelcome } from "./pages/welcome/welcome";
 import { initPageInstructions } from "./pages/instructions/instructions";
 import { initPageChoice } from "./pages/choice/choice";
@@ -93,5 +94,66 @@ export function initRouter(container: Element) {
     goTo("/welcome");
   } else {
     handleRoute(location.pathname);
+  }
+}
+ */
+
+import { initPageWelcome } from "./pages/welcome/welcome";
+import { initPageInstructions } from "./pages/instructions/instructions";
+import { initPageChoice } from "./pages/choice/choice";
+import { initPageComputerYouChoice } from "./pages/computer-you-choice/computer-you-choice";
+import { initPageResult } from "./pages/result/result";
+
+const BASE_PATH = "/piedra-papel-tijera-juego-web";
+
+const routes = [
+  { path: /^\/welcome$/, page: initPageWelcome },
+  { path: /^\/instructions$/, page: initPageInstructions },
+  { path: /^\/choice$/, page: initPageChoice },
+  { path: /^\/computer-you-choice$/, page: initPageComputerYouChoice },
+  { path: /^\/result$/, page: initPageResult },
+];
+
+export function initRouter(container: Element) {
+  function isGithubPages() {
+    return location.host.includes("github.io");
+  }
+
+  function goTo(path) {
+    const completePath = isGithubPages() ? BASE_PATH + path : path;
+    // Usamos hash para evitar 404
+    window.location.hash = completePath;
+    handleRoute(completePath);
+  }
+
+  function handleRoute(route) {
+    console.log("El handleRoute recibió una nueva ruta", route);
+    const newRoute = isGithubPages() ? route.replace(BASE_PATH, "") : route;
+
+    // Limpiamos el hash para que coincida con las rutas
+    const cleanRoute = newRoute.replace(/^#/, "");
+
+    for (const r of routes) {
+      if (r.path.test(cleanRoute)) {
+        const el = r.page({ goTo });
+        if (container.firstChild) {
+          container.firstChild.remove();
+        }
+        container.appendChild(el);
+        return;
+      }
+    }
+  }
+
+  // Inicializar en la ruta de bienvenida
+  if (
+    window.location.hash === "" ||
+    window.location.hash === "#/" ||
+    window.location.hash === `#${BASE_PATH}` ||
+    window.location.hash === `#${BASE_PATH}/`
+  ) {
+    goTo("/welcome");
+  } else {
+    handleRoute(window.location.hash.slice(1));
   }
 }
