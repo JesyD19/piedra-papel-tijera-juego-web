@@ -113,7 +113,7 @@ export function initPageChoice(params) {
 
   window.onpopstate = function (event) {
     countdownElement.stopCountdown();
-    console.log("Countdown detenido por navegación");
+    //console.log("Countdown detenido por navegación");
 
     countdownElement.render();
 

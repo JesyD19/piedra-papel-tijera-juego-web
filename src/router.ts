@@ -42,7 +42,6 @@ import { initPageResult } from "./pages/result/result"; */
   } */
 //}
 
-/* 
 import { initPageWelcome } from "./pages/welcome/welcome";
 import { initPageInstructions } from "./pages/instructions/instructions";
 import { initPageChoice } from "./pages/choice/choice";
@@ -96,8 +95,8 @@ export function initRouter(container: Element) {
     handleRoute(location.pathname);
   }
 }
- */
 
+/* 
 import { initPageWelcome } from "./pages/welcome/welcome";
 import { initPageInstructions } from "./pages/instructions/instructions";
 import { initPageChoice } from "./pages/choice/choice";
@@ -157,3 +156,4 @@ export function initRouter(container: Element) {
     handleRoute(window.location.hash.slice(1));
   }
 }
+ */
