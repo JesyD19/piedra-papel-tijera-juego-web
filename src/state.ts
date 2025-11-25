@@ -27,8 +27,6 @@ export const state = {
 
     currentState.currentGame = play;
     currentState.history.push(play);
-
-    console.log(currentState);
   },
 
   choiceComputer(): Jugada {
